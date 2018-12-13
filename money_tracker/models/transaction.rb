@@ -1,3 +1,5 @@
+require_relative('../db/sql_runner.rb')
+require 'pry'
 class Transaction
 
 
@@ -9,10 +11,42 @@ class Transaction
     @transaction_date = options['transaction_date'].to_i
     @amount = options['amount'].to_i
     @merchant_id = options['merchant_id'].to_i
-    @transaction_id = options['transaction_id'].to_i
+    @tag_id = options['tag_id'].to_i
+  end
+
+  def self.delete_all
+    sql = "DELETE FROM transactions"
+    SqlRunner.run(sql)
+  end
+
+  def self.find_all
+    sql = "SELECT * FROM transactions"
+    results = SqlRunner.run(sql)
+    # TODO TO FIX THE DATE AS IT ONLY COMES OUT AS YEAR 
+    return transctions = results.map {|transaction| Transaction.new(transaction)}
   end
 
 
+  def save()
+    sql = "INSERT INTO transactions (transaction_date, amount, merchant_id, tag_id)
+           VALUES ($1,$2,$3,$4) RETURNING id"
+    values = [@transaction_date, @amount, @merchant_id, @tag_id]
+    result = SqlRunner.run(sql, values)
+    @id = result.first['id']
+  end
+
+
+  def delete
+    sql = "DELETE FROM transactions WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql,values)
+  end
+
+  def update()
+    sql = "UPDATE transactions SET (transaction_date, amount, merchant_id, tag_id) = ($1, $2, $3, $4) WHERE id = $5"
+    values = [@transaction_date, @amount, @merchant_id, @tag_id, @id]
+    SqlRunner.run(sql,values)
+  end
 
 
 end
