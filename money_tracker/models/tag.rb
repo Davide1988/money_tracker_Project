@@ -1,4 +1,7 @@
 require_relative('../db/sql_runner.rb')
+require_relative('../models/merchant')
+require_relative('../models/transaction')
+
 class Tag
 
   attr_reader :id
@@ -37,6 +40,14 @@ class Tag
     sql = "UPDATE tags SET type = $1 WHERE id = $2"
     values = [@type, @id]
     SqlRunner.run(sql,values)
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM tags WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    tag = results.first
+    return Tag.new(tag)
   end
 
 

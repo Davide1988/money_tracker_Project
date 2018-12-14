@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner.rb')
+require_relative('../models/merchant')
+require_relative('../models/tag')
 require 'pry'
 class Transaction
 
@@ -22,8 +24,10 @@ class Transaction
   def self.find_all
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)
-    # TODO TO FIX THE DATE AS IT ONLY COMES OUT AS YEAR 
-    return transctions = results.map {|transaction| Transaction.new(transaction)}
+    # TODO TO FIX THE DATE AS IT ONLY COMES OUT AS YEAR
+    # binding.pry
+    return transactions = results.map {|transaction| Transaction.new(transaction)}
+    nil
   end
 
 
@@ -47,6 +51,31 @@ class Transaction
     values = [@transaction_date, @amount, @merchant_id, @tag_id, @id]
     SqlRunner.run(sql,values)
   end
+
+  def self.find(id)
+    sql = "SELECT * FROM transactions WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    transaction = results.first
+    return Transaction.new(transaction)
+  end
+
+  def merchant()
+    sql = "SELECT * FROM merchants
+    WHERE id = $1"
+    values = [@merchant_id]
+    results = SqlRunner.run( sql, values )
+    return Merchant.new( results.first )
+  end
+
+  def tag()
+    sql = "SELECT * FROM tags
+    WHERE id = $1"
+    values = [@tag_id]
+    results = SqlRunner.run( sql, values )
+    return Tag.new( results.first )
+  end
+
 
 
 end

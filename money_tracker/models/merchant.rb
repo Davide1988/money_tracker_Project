@@ -1,4 +1,6 @@
 require_relative('../db/sql_runner.rb')
+require_relative('../models/tag')
+require_relative('../models/transaction')
 require 'pry'
 
 
@@ -41,6 +43,14 @@ class Merchant
     sql = "UPDATE merchants SET name = $1 WHERE id = $2"
     values = [@name, @id]
     SqlRunner.run(sql, values)
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM merchants WHERE id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    merchant = results.first
+    return Merchant.new(merchant)
   end
 
 
