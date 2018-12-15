@@ -1,0 +1,14 @@
+<form  action="/tags/<%=@tag.id%>" method="post">
+
+  <label for="type"> Tag: </label>
+  <input id="type" type="text" name="type" value="<%=@tag.type%>">
+
+  <input type="submit" value="Edit">
+
+</form>
+
+<form method="post" action="/tags/<%= @tag.id %>/delete">
+
+  <input type="submit" value="Delete tag"/>
+
+</form>

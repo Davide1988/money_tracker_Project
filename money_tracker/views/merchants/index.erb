@@ -1,0 +1,16 @@
+<h1>THIS ALLOW YOU TO ADD MODIFY OR DELETE ANY MERCHANTS</h1>
+
+<a href="/merchants/new">Add New Merchant</a>
+
+
+<%@merchants.each do |merchant|%>
+<p>Merchant names : <%= merchant.name %></p>
+<a href="./merchants/<%= merchant.id%>"> Details </a>
+<a href="./merchants/<%= merchant.id%>/edit"> Edit </a>
+<form method="post" action="/merchants/<%= merchant.id %>/delete">
+
+  <input type="submit" value="Delete merchant"/>
+
+</form>
+
+<% end %>
