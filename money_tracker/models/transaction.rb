@@ -2,6 +2,7 @@ require_relative('../db/sql_runner.rb')
 require_relative('../models/merchant')
 require_relative('../models/tag')
 require 'pry'
+
 class Transaction
 
 
@@ -27,7 +28,6 @@ class Transaction
     # TODO TO FIX THE DATE AS IT ONLY COMES OUT AS YEAR
     # binding.pry
     return transactions = results.map {|transaction| Transaction.new(transaction)}
-    nil
   end
 
 

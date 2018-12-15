@@ -1,0 +1,16 @@
+<h1>VIEW YOUR TRANSACTIONS</h1>
+
+<a href="/transactions/new">New transaction</a>
+
+<h1>transactions : </h1>
+
+<%@transactions.each do |transaction|%>
+<p>Merchant : <%= transaction.merchant.name %></p>
+<p>Category : <%= transaction.tag.type %></p>
+<p>Transaction date : <%= transaction.transaction_date %></p>
+<p>Transaction amount £ : <%= transaction.amount%></p>
+<hr>
+<% @total += transaction.amount %>
+<% end %>
+
+<p>Your total spend is : <%= @total %></p>
