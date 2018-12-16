@@ -17,10 +17,10 @@ end
 
 
 <%@transactions.each do |transaction|%>
-<p>Merchant : <%= transaction.merchant.name %></p>
-<p>Category : <%= transaction.tag.type %></p>
-<p>Transaction date : <% date = transaction.transaction_date %> <%= date = reverseWords(date) %></p>
-<p>Transaction amount £ : <%= transaction.amount%></p>
+<p>Merchant :<strong class="total_spend"> <%= transaction.merchant.name %></strong></p>
+<p>Category :<strong class="total_spend"> <%= transaction.tag.type %></strong></p>
+<p>Transaction date : <strong class="total_spend"> <% date = transaction.transaction_date %> <%= date = reverseWords(date) %></strong></p>
+<p>Transaction amount £ : <strong class="total_spend"><%= transaction.amount%></strong></p>
 <hr>
 <% @total += transaction.amount %>
 <% end %>

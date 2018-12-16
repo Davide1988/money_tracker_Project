@@ -13,7 +13,7 @@ class Transaction
   def initialize(options)
     @id = options['id'].to_i if options['id']
     @transaction_date = options['transaction_date']
-    @amount = options['amount'].to_i
+    @amount = options['amount'].to_f.round(2)
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
   end
@@ -74,6 +74,9 @@ class Transaction
     results = SqlRunner.run( sql, values )
     return Tag.new( results.first )
   end
+
+
+
 
 
 
