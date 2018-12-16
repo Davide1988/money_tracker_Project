@@ -4,15 +4,12 @@ def reverseWords(s)
   s.split('-').reverse.join('-')
 end
 %>
-<h1>VIEW YOUR TRANSACTIONS</h1>
 
-<a href="/transactions/new">New transaction</a>
-<a href="/transactions/sort_by_amount"> Sort the transactions by amount </a>
-
+<a href="/transactions">Back to the Transacions list</a>
 
 <h1>Transactions : </h1>
 
-<%@transactions.sort!{ |a,b| a.transaction_date <=> b.transaction_date}%>
+<%@transactions.sort!{ |a,b| a.amount <=> b.amount}%>
 
 
 

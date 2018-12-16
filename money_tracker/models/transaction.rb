@@ -1,6 +1,7 @@
 require_relative('../db/sql_runner.rb')
 require_relative('../models/merchant')
 require_relative('../models/tag')
+require 'date'
 require 'pry'
 
 class Transaction
@@ -11,7 +12,7 @@ class Transaction
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
-    @transaction_date = options['transaction_date'].to_i
+    @transaction_date = options['transaction_date']
     @amount = options['amount'].to_i
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
@@ -25,8 +26,6 @@ class Transaction
   def self.find_all
     sql = "SELECT * FROM transactions"
     results = SqlRunner.run(sql)
-    # TODO TO FIX THE DATE AS IT ONLY COMES OUT AS YEAR
-    # binding.pry
     return transactions = results.map {|transaction| Transaction.new(transaction)}
   end
 
@@ -36,7 +35,7 @@ class Transaction
            VALUES ($1,$2,$3,$4) RETURNING id"
     values = [@transaction_date, @amount, @merchant_id, @tag_id]
     result = SqlRunner.run(sql, values)
-    @id = result.first['id']
+    @id = result.first['id'].to_i
   end
 
 

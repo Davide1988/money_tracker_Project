@@ -1,7 +1,30 @@
-<form  action="/transacions" method="post">
+<form  action="/transactions" method="post">
 
-  <label for="name"> Date: </label>
-  <input id="name" type="text" name="name">
+  <label for="date"> Date: </label>
+  <input id="date" type="date" name="transaction_date" required="required">
+
+
+  <label for="amount"> Amount £: </label>
+  <input id="amount" type="number" min="0.00" max="1000000.00" step="0.01" name="amount" required="required">
+
+  <label>
+  Select a merchant:
+    <select name="merchant_id">
+      <% for merchant in @merchants %>
+      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+      <% end %>
+    </select>
+  </label>
+
+  <label>
+  Select a category:
+    <select name="tag_id">
+      <% for tag in @tags %>
+      <option value="<%= tag.id %>"><%= tag.type %></option>
+      <% end %>
+    </select>
+  </label>
+
 
   <input type="submit" value="Create">
 

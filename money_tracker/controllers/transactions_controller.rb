@@ -5,6 +5,7 @@ require_relative( '../models/merchant')
 require_relative( '../models/transaction')
 also_reload( '../models/*' )
 
+
 get "/transactions" do
   @total = 0
   @transactions = Transaction.find_all
@@ -17,8 +18,15 @@ get "/transactions/new" do
   erb(:"transactions/new")
 end
 
-post "trasacions" do
-  @transactions = Transacion.new(params)
+post "/transactions" do
+  params.inspect
+  @transactions = Transaction.new(params)
   @transactions.save
   erb(:"transactions/create")
+end
+
+get "/transactions/sort_by_amount" do
+  @total = 0
+  @transactions = Transaction.find_all
+  erb(:"transactions/sort_by_amount")
 end

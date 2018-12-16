@@ -1,0 +1,22 @@
+body {
+  padding: 30px;
+  font-family: 'Cinzel', serif;
+  color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: url("https://buidln.clipdealer.com/000/848/187//previews/6--848187-Hand%20and%20coins%2C%20isolated%20on%20white%20background.jpg"); */
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  color: black;
+  text-align: center;
+}
+
+.total_spend {
+  color: red;
+
+}

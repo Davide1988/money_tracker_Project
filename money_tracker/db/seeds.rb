@@ -21,6 +21,7 @@ tag2.save
 
 transaction1 = Transaction.new ({'transaction_date' => 20181103, 'amount' => 30, 'merchant_id' => merchant1.id, 'tag_id' => tag1.id})
 transaction1.save
+p Transaction.find_all
 
 # transaction2 = Transaction.new ({'transaction_date' => '14-11-2018', 'amount' => 20, 'merchant_id' => merchant2.id, 'tag_id' => tag2.id})
 # transaction2.save
