@@ -1,4 +1,18 @@
 
+
+.home_button{
+  text-decoration: none;
+  color: red;
+  font-size: 30px;
+}
+
+.home_icon{
+  width: 20px;
+  height: auto;
+
+}
+
+
 .moneyicon{
   margin-top: 200px;
   display: block;

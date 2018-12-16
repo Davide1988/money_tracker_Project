@@ -9,6 +9,7 @@ also_reload( '../models/*' )
 
 
 get "/transactions" do
+  @budget = Budget.find_all
   @total = 0
   @transactions = Transaction.find_all
   erb(:"transactions/index")

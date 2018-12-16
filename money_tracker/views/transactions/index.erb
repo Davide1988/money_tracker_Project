@@ -25,4 +25,11 @@ end
 <% @total += transaction.amount %>
 <% end %>
 
+<%@budget.each do |budget| %>
+<%@result = @total > budget.budget_amount ? "You are over budget of #{budget.budget_amount - @total}" : "You can still spend £ #{budget.budget_amount - @total} of your budget!" %>
+<% end %>
+
+
+
 <p class="total_spend">Your total spend is £ : <strong><%= @total %></strong></p>
+<p><strong><%=@result%></strong></p>
