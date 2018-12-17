@@ -23,6 +23,12 @@ get "/merchants/:id" do
   erb(:"merchants/details")
 end
 
+get "/merchants/:id/transactions" do
+  @merchant = Merchant.find(params[:id])
+  @transactions = Transaction.find_all
+  erb(:"merchants/transactions")
+end
+
 get "/merchants/:id/edit" do
   @merchant = Merchant.find(params[:id])
   erb(:"merchants/edit")

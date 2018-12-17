@@ -33,3 +33,15 @@ get "/transactions/sort_by_amount" do
   @transactions = Transaction.find_all
   erb(:"transactions/sort_by_amount")
 end
+
+post "/transactions/:id/delete" do
+  @transaction = Transaction.find(params[:id])
+  @transaction.delete
+  redirect to ("/transactions")
+end
+
+get "/transactions/sort_by_categories" do
+  @transactions = Transaction.find_all
+  @tags = Tag.find_all
+  erb(:"transactions/sort_by_categories")
+end

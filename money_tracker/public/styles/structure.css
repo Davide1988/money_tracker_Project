@@ -20,3 +20,12 @@ p {
   color: red;
 
 }
+
+.picture-start-page {
+  padding-top: 50px;
+  width:540px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,7 +1,7 @@
 <form  action="/budgets/<%=@budget.id%>" method="post">
 
   <label for="budget-amount"> New Budget £ : </label>
-  <input id="budget-amount" type="number" min="0.00" max="1000000.00" step="0.01" name="budget_amount" value="<%= @budget.budget_amount %>">
+  <input id="budget-amount" type="number" min="0.00" max="1000000.00" step="0.01" name="budget_amount" value="<%='%.2f' % @budget.budget_amount %>">
 
   <input type="submit" value="Edit Budget">
 

@@ -7,6 +7,7 @@
 <p> Tag :  <%= tag.type %></p>
 <a href="./tags/<%= tag.id%>"> Details </a>
 <a href="./tags/<%= tag.id%>/edit"> Edit </a>
+<a href="./tags/<%= tag.id%>/transactions"> See this cagory transactions </a>
 <form method="post" action="/tags/<%= tag.id %>/delete">
 
   <input type="submit" value="Delete tag"/>

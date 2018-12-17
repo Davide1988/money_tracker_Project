@@ -1,8 +1,15 @@
-
+a {
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+a:hover{
+  color: green;
+}
 
 .home_button{
   text-decoration: none;
-  color: red;
+  color: #C9AE5D;
   font-size: 30px;
 }
 

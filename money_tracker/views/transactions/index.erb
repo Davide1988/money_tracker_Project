@@ -7,7 +7,8 @@ end
 <h1>VIEW YOUR TRANSACTIONS</h1>
 
 <a href="/transactions/new">New transaction</a>
-<a href="/transactions/sort_by_amount"> Sort the transactions by amount </a>
+<a href="/transactions/sort_by_amount"> Sort the transactions by Amount </a>
+<a href="/transactions/sort_by_categories"> Sort the transactions by Categories </a>
 
 
 <h1>Transactions : </h1>
@@ -20,13 +21,18 @@ end
 <p>Merchant :<strong class="total_spend"> <%= transaction.merchant.name %></strong></p>
 <p>Category :<strong class="total_spend"> <%= transaction.tag.type %></strong></p>
 <p>Transaction date : <strong class="total_spend"> <% date = transaction.transaction_date %> <%= date = reverseWords(date) %></strong></p>
-<p>Transaction amount £ : <strong class="total_spend"><%= transaction.amount%></strong></p>
+<p>Transaction amount £ : <strong class="total_spend"><%= '%.2f' % transaction.amount%></strong></p>
+<form method="post" action="/transactions/<%= transaction.id %>/delete">
+
+  <input type="submit" value="Delete Transacion"/>
+
+</form>
 <hr>
 <% @total += transaction.amount %>
 <% end %>
 
 <%@budget.each do |budget| %>
-<%@result = @total > budget.budget_amount ? "You are over budget of #{budget.budget_amount - @total}" : "You can still spend £ #{budget.budget_amount - @total} of your budget!" %>
+<%@result = @total > budget.budget_amount ? "You are over budget of £ : #{(budget.budget_amount - @total).round(2) * -1}" : "You can still spend £ #{(budget.budget_amount - @total).round(2)} of your budget!" %>
 <% end %>
 
 

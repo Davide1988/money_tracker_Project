@@ -8,7 +8,7 @@ class Transaction
 
 
   attr_reader :id
-  attr_accessor :transaction_date, :amount, :merchant_id, :transaction_id
+  attr_accessor :transaction_date, :amount, :merchant_id, :tag_id
 
   def initialize(options)
     @id = options['id'].to_i if options['id']

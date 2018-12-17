@@ -17,9 +17,9 @@ end
 <p>Merchant : <strong class="total_spend"> <%= transaction.merchant.name %></strong></p>
 <p>Category : <strong class="total_spend"> <%= transaction.tag.type %></strong></p>
 <p>Transaction date :<strong class="total_spend">  <% date = transaction.transaction_date %> <%= date = reverseWords(date) %></strong></p>
-<p>Transaction amount £ :<strong class="total_spend">  <%= transaction.amount%></strong></p>
+<p>Transaction amount £ :<strong class="total_spend">  <%= '%.2f' % transaction.amount%></strong></p>
 <hr>
 <% @total += transaction.amount %>
 <% end %>
 
-<p class="total_spend">Your total spend is £ : <strong><%= @total %></strong></p>
+<p class="total_spend">Your total spend is £ : <strong><%= '%.2f' % @total %></strong></p>

@@ -1,0 +1,28 @@
+<%
+def reverseWords(s)
+  s.split('-').reverse.join('-')
+end
+%>
+
+<label>
+Select the category you want to view the transactions for :
+  <select name="tag_id">
+    <% for tag in @tags %>
+    <option><%= tag.type %></option>
+  <% end %>
+  </select>
+</label>
+
+
+<%@transactions.each do |transaction|%>
+<% if transaction.tag_id == 1 %>
+<p>Merchant :<strong class="total_spend"> <%= transaction.merchant.name %></strong></p>
+<p>Category :<strong class="total_spend"> <%= transaction.tag.type %></strong></p>
+<p>Transaction date : <strong class="total_spend"> <% date = transaction.transaction_date %> <%= date = reverseWords(date) %></strong></p>
+<p>Transaction amount £ : <strong class="total_spend"><%= '%.2f' % transaction.amount%></strong></p>
+<form method="post" action="/transactions/<%= transaction.id %>/delete">
+
+</form>
+<hr>
+<% end %>
+<% end %>

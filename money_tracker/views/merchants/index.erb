@@ -7,6 +7,7 @@
 <p>Merchant names : <%= merchant.name %></p>
 <a href="./merchants/<%= merchant.id%>"> Details </a>
 <a href="./merchants/<%= merchant.id%>/edit"> Edit </a>
+<a href="./merchants/<%= merchant.id%>/transactions"> See this merchant transactions </a>
 <form method="post" action="/merchants/<%= merchant.id %>/delete">
 
   <input type="submit" value="Delete merchant"/>

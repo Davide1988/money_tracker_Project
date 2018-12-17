@@ -1,4 +1,11 @@
+<form  action="/merchant/<%=@merchant.id%>" method="post">
 
+  <label for="name"> Name: </label>
+  <input id="name" type="text" name="name" value="<%=@merchant.name%>">
+
+  <input type="submit" value="Edit">
+
+</form>
 
 
 <form method="post" action="/merchants/<%= @merchant.id %>/delete">
