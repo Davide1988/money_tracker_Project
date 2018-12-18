@@ -1,20 +1,13 @@
 <h1>Transactions: </h1>
-<%
-def reverseWords(s)
+<%def reverseWords(s)
   s.split('-').reverse.join('-')
-end
-%>
-<%
-  def splitDate(d)
+  end%>
+<% def splitDate(d)
     d.split('-')
-  end
-%>
-
-<%
-  def reconstruct(d)
+  end%>
+<% def reconstruct(d)
     d.join('-')
-  end
-%>
+  end%>
 
 <% @transactions.each  do |transaction|%>
 <% date_splitted = splitDate(transaction.transaction_date)%>
