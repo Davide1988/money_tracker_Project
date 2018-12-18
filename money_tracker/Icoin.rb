@@ -13,3 +13,7 @@ get '/start' do
   @merchants = Merchant.find_all
   erb (:start)
 end
+
+get '/thanks' do
+  erb(:thanks)
+end 

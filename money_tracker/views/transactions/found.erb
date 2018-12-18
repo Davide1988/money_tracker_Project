@@ -1,0 +1,21 @@
+<h1>Transactions: </h1>
+
+<%
+  def splitDate(d)
+    d.split('-')
+  end
+%>
+
+<%
+  def reconstruct(d)
+    d.join('-')
+  end
+%>
+
+<%@transactions.each do |transaction|%>
+<%= date_splitted = splitDate(transaction.transaction_date)%><br>
+<% date_splitted.pop%>
+<%= date_for_finding = reconstruct(date_splitted) %><br>
+<% end %>
+
+ <%= @month.date%><br>

@@ -4,7 +4,7 @@ require_relative( '../models/tag')
 require_relative( '../models/merchant')
 require_relative( '../models/transaction')
 require_relative( '../models/budget')
-
+require_relative( '../models/month')
 also_reload( '../models/*' )
 
 
@@ -22,7 +22,6 @@ get "/transactions/new" do
 end
 
 post "/transactions" do
-  params.inspect
   @transactions = Transaction.new(params)
   @transactions.save
   erb(:"transactions/create")
@@ -44,4 +43,15 @@ get "/transactions/sort_by_categories" do
   @transactions = Transaction.find_all
   @tags = Tag.find_all
   erb(:"transactions/sort_by_categories")
+end
+
+get "/transactions/calendar" do
+  @transactions = Transaction.find_all
+  erb(:"transactions/calendar")
+end
+
+post "/transactions/found" do
+  @transactions = Transaction.find_all
+  @month = Month.new(params)
+  erb(:"transactions/found")
 end

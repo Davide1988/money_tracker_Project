@@ -5,13 +5,13 @@
 
 <%@merchants.each do |merchant|%>
 <p>Merchant names : <%= merchant.name %></p>
-<a href="./merchants/<%= merchant.id%>"> Details </a>
-<a href="./merchants/<%= merchant.id%>/edit"> Edit </a>
-<a href="./merchants/<%= merchant.id%>/transactions"> See this merchant transactions </a>
+<a  href="./merchants/<%= merchant.id%>"> Details </a>
+<a  href="./merchants/<%= merchant.id%>/edit"> Edit </a>
+<a  href="./merchants/<%= merchant.id%>/transactions"> See this merchant transactions </a>
 <form method="post" action="/merchants/<%= merchant.id %>/delete">
 
-  <input type="submit" value="Delete merchant"/>
+  <input class="home_icon icon_center" src="https://img.icons8.com/small/1600/filled-trash.png" type="image"/>
 
 </form>
-
+<hr>
 <% end %>
