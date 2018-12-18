@@ -51,6 +51,7 @@ get "/transactions/calendar" do
 end
 
 post "/transactions/found" do
+  @ordered_transactions = []
   @transactions = Transaction.find_all
   @month = Month.new(params)
   erb(:"transactions/found")

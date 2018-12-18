@@ -1,5 +1,9 @@
 <h1>Transactions: </h1>
-
+<%
+def reverseWords(s)
+  s.split('-').reverse.join('-')
+end
+%>
 <%
   def splitDate(d)
     d.split('-')
@@ -12,10 +16,20 @@
   end
 %>
 
-<%@transactions.each do |transaction|%>
-<%= date_splitted = splitDate(transaction.transaction_date)%><br>
+<% @transactions.each  do |transaction|%>
+<% date_splitted = splitDate(transaction.transaction_date)%>
 <% date_splitted.pop%>
-<%= date_for_finding = reconstruct(date_splitted) %><br>
+<% date_for_finding = reconstruct(date_splitted) %>
+<% if date_for_finding == @month.date %>
+<% @ordered_transactions << transaction %>
+<% end %>
 <% end %>
 
- <%= @month.date%><br>
+<%@ordered_transactions.sort!{ |a,b| a.transaction_date <=> b.transaction_date}%>
+
+<%@ordered_transactions.each do |transaction|%>
+<p>Merchant :<strong class="total_spend"> <%= transaction.merchant.name %></strong></p>
+<p>Category :<strong class="total_spend"> <%= transaction.tag.type %></strong></p>
+<p>Transaction date : <strong class="total_spend"> <% date = transaction.transaction_date %> <%= date = reverseWords(date) %></strong></p>
+<p>Transaction amount £ : <strong class="total_spend"><%= '%.2f' % transaction.amount%></strong></p>
+<% end %>

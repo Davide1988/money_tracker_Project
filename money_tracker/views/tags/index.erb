@@ -5,14 +5,23 @@
 <p>Spending Categories : </p>
 <%@tags.each do |tag|%>
 <p> Tag :  <%= tag.type %></p>
-<a href="./tags/<%= tag.id%>"> Details </a>
-<a href="./tags/<%= tag.id%>/edit"> Edit </a>
-<a href="./tags/<%= tag.id%>/transactions"> See this category transactions </a>
+
+
+<ul class="list">
+
+<li><a href="./tags/<%= tag.id%>"> Details </a></li>
+<li><a href="./tags/<%= tag.id%>/edit"> Edit </a></li>
+<li><a href="./tags/<%= tag.id%>/transactions"> See this category transactions </a></li>
+
+</ul>
+
+
 <form method="post" action="/tags/<%= tag.id %>/delete">
 
   <input class="home_icon icon_center" src="https://img.icons8.com/small/1600/filled-trash.png" type="image"/>
 
 </form>
 
+<hr>
 
 <% end %>

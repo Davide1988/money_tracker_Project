@@ -44,3 +44,12 @@ p {
   width: 1200px;
   height: auto;
 }
+
+.list {
+  list-style-type: none;
+  text-align: center;
+}
+
+li {
+  display: inline-block;
+}
