@@ -1,0 +1,7 @@
+<h1>all budgets</h1>
+
+<% @budgets.each do |budget| %>
+
+<p> For <%= budget.tag.type %> you have set this budget :£ <%= budget.budget_amount %></p>
+
+<% end %>

@@ -1,0 +1,20 @@
+<form  action="/budgets" method="post">
+
+
+  <label>
+  Select a category:
+    <select name="tag_id">
+      <% for tag in @tags %>
+      <option value="<%= tag.id %>"><%= tag.type %></option>
+      <% end %>
+    </select>
+  </label>
+
+
+  <label for="budget_amount"> Budget amount :£ </label>
+  <input id="budget_amount" type="number" min="0.00" max="1000000.00" step="0.01" name="budget_amount" required="required" placeholder="type here">
+
+
+  <input type="submit" value="Save new budget">
+
+</form>

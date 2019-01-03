@@ -59,5 +59,18 @@ li {
 
 .list_start_page{
   list-style-type: none;
-  padding: 20px;
+  padding-top: 30px;
+}
+
+.foot-left {
+  position: absolute;
+  bottom: 5px;
+  left: 15px;
+
+}
+
+.foot-right {
+  position: absolute;
+  bottom: 5px;
+  right: 15px;
 }

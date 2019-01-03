@@ -1,6 +1,7 @@
-<%@budgets.each do |budget|%>
+<a href="./budgets/new"> New Budget </a>
+<a href="./budgets/show_all"> Budget per Categories</a>
 
-<h1>THIS IS YOUR ACTUAL BUDGET £ : <%= '%.2f' % budget.budget_amount%></h1>
-<a href="./budgets/<%= budget.id%>/edit"> Edit Budget </a>
 
-<% end %>
+
+<h1>THIS IS YOUR TOTAL BUDGET : £  <%= '%.2f' % @tot_budgets %></h1>
+<p>AT THE MOMENT <%=$result%></p>

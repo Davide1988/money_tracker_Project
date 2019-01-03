@@ -1,6 +1,6 @@
 
 <%
-def reverseWords(s)
+def reverseDate(s)
   s.split('-').reverse.join('-')
 end
 %>
@@ -17,15 +17,18 @@ end
 
 <h1>Transactions : </h1>
 
+
+
 <%@transactions.sort!{ |a,b| a.transaction_date <=> b.transaction_date}%>
 
 
 
 <%@transactions.each do |transaction|%>
+
 <p>Merchant :<strong class="total_spend"> <%= transaction.merchant.name %></strong></p>
 <p>Category :<strong class="total_spend"> <%= transaction.tag.type %></strong></p>
-<p>Transaction date : <strong class="total_spend"> <% date = transaction.transaction_date %> <%= date = reverseWords(date) %></strong></p>
-<p>Transaction amount £ : <strong class="total_spend"><%= '%.2f' % transaction.amount%></strong></p>
+<p>Transaction date : <strong class="total_spend"> <% date = transaction.transaction_date %> <%= date = reverseDate(date) %></strong></p>
+<p>Transaction amount : £ <strong class="total_spend"><%= '%.2f' % transaction.amount%></strong></p>
 
 <form method="post" action="/transactions/<%= transaction.id %>/delete">
   <input class="home_icon icon_center" src="https://img.icons8.com/small/1600/filled-trash.png" type="image"/>
@@ -36,10 +39,10 @@ end
 <% end %>
 
 <%@budget.each do |budget| %>
-<%@result = @total > budget.budget_amount ? "You are over budget of £ : #{(budget.budget_amount - @total).round(2) * -1}" : "You can still spend £ #{(budget.budget_amount - @total).round(2)} of your budget!" %>
+<%$result = @total > budget.budget_amount ? "You are over budget by : £ #{(budget.budget_amount - @total).round(2) * -1}" : "You can still spend : £ #{(budget.budget_amount - @total).round(2)} of your budget!" %>
 <% end %>
 
 
 
 <p class="total_spend">Your total spend is £ : <strong><%= @total %></strong></p>
-<p><strong><%=@result%></strong></p>
+<p><strong><%=$result%></strong></p>

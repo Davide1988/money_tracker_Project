@@ -25,4 +25,5 @@
 <p>Category :<strong class="total_spend"> <%= transaction.tag.type %></strong></p>
 <p>Transaction date : <strong class="total_spend"> <% date = transaction.transaction_date %> <%= date = reverseWords(date) %></strong></p>
 <p>Transaction amount £ : <strong class="total_spend"><%= '%.2f' % transaction.amount%></strong></p>
+<hr>
 <% end %>

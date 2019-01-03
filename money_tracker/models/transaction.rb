@@ -2,7 +2,6 @@ require_relative('../db/sql_runner.rb')
 require_relative('../models/merchant')
 require_relative('../models/month')
 require_relative('../models/tag')
-require 'date'
 require 'pry'
 
 class Transaction
@@ -17,7 +16,6 @@ class Transaction
     @amount = options['amount'].to_f.round(2)
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
-    # Time.parse(options)
   end
 
   def self.delete_all
@@ -76,8 +74,6 @@ class Transaction
     results = SqlRunner.run( sql, values )
     return Tag.new( results.first )
   end
-
-
 
 
 
