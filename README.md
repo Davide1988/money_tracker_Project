@@ -1,10 +1,12 @@
 
 I-coins: 
 
-This is a basic spending tracker app.That allows you to add new transaction and sort them by category and merchant.
-With I-coins you can also assing a budget to each category and control your spends monitorig the total budget!
+This is my first web-app!
 
-This web-app is build with :
+I-coins allows you to add new transaction and sort them by category and merchant.
+With I-coins you can also assign a budget to each category, control your spending and monitor the total budget!
+
+This web-app is build with:
 
 Ruby
 PostgreSQL
@@ -15,7 +17,7 @@ Installing Sinatra is pretty quick and painless as it is installing the PG gem t
 gem install sinatra
 gem install pg
 
-Few step to set up the DB
+Few steps to set up the DB include:
 createdb money_tracker
 psql -d money_tracker -f db/money_tracker.sql
 rb db/seeds.rb
