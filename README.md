@@ -8,23 +8,26 @@ With I-coins you can also assign a budget to each category, control your spendin
 
 ## This web-app is build with:
 
-Ruby
-PostgreSQL
-Sinatra
+* Ruby
+* PostgreSQL
+* Sinatra
 
 ## Installing Sinatra is pretty quick and painless as it is installing the PG gem to access the DB
-
+```
 gem install sinatra
 gem install pg
-
+```
 ## Few steps to set up the DB include:
+```
 createdb money_tracker
 psql -d money_tracker -f db/money_tracker.sql
 rb db/seeds.rb
-
+```
 
 ## Run the web-server:
+```
 ruby Icoin.rb
+```
 
 ## Now type the following to your browser:
 http://localhost:4567
